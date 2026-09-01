@@ -1,10 +1,10 @@
 {
   "name": "wuxing-atom",
   "private": true,
-  "version": "0.77.0-deploy",
+  "version": "0.77.1-dark-gallery",
   "type": "module",
   "scripts": {
-    "unpack": "tar -xzf src.tar.gz",
+    "unpack": "rm -rf src && tar -xzf src.tar.gz",
     "dev": "npm run unpack && vite",
     "build": "npm run unpack && vite build",
     "preview": "vite preview"
