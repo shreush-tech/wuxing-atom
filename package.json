@@ -1,0 +1,27 @@
+{
+  "name": "wuxing-atom",
+  "private": true,
+  "version": "0.77.1-dark-gallery",
+  "type": "module",
+  "scripts": {
+    "unpack": "rm -rf src && tar -xzf src.tar.gz",
+    "dev": "npm run unpack && vite",
+    "build": "npm run unpack && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.10",
+    "framer-motion": "^11.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.165.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}
