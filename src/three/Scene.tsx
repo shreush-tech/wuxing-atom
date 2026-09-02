@@ -63,16 +63,12 @@ function World({focus,pulseKey,onFocus,waterSegments,particles}:{focus:ElementId
   const interaction=useRef(createInteractionState())
 
   return <>
-    <ambientLight intensity={.42}/>
-    <pointLight position={[0,5,4]} intensity={14} distance={16} decay={2} color="#f0b37b"/>
-    <pointLight position={[-5,1,3]} intensity={7} distance={14} decay={2} color="#779783"/>
-    <pointLight position={[5,-1,2]} intensity={6} distance={14} decay={2} color="#aab6c2"/>
-    <hemisphereLight intensity={.52} color="#e9eef0" groundColor="#080a0c"/>
-    <directionalLight position={[5,7,8]} intensity={1.55} color="#fff1dd"/>
-    <directionalLight position={[-6,1,-4]} intensity={.48} color="#b8cad4"/>
+    <ambientLight intensity={.68}/>
+    <hemisphereLight intensity={.62} color="#f2eadc" groundColor="#080a0c"/>
+    <directionalLight position={[5,6,7]} intensity={1.35} color="#fff0d8"/>
 
     <group ref={sculpture} rotation={[.1,-.28,.05]}>
-      <CosmicEnergySystem reduced={typeof window!=='undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches}/>
+      <CosmicEnergySystem/>
       <ClassicalNetwork visibility={resultMode ? .55 : 0}/>
       <SelectionRipple/>
         <NucleusAbsorptionPulse/>
@@ -118,13 +114,13 @@ export function Scene(){
 
   return <div className="scene-shell">
     <Canvas
-      camera={{position:[.2,1.4,10.2],fov:42}}
-      dpr={tier==='high'?[1,1.35]:tier==='medium'?[1,1.15]:1}
+      camera={{position:[0,.55,11.35],fov:40}}
+      dpr={tier==='low'?.72:tier==='medium'?.82:.92}
       gl={{antialias:false,powerPreference:'high-performance',alpha:false,stencil:false}}
       onCreated={({gl}:any)=>{
         gl.toneMapping=THREE.ACESFilmicToneMapping
         gl.toneMappingExposure=1.05
-        if('transmissionResolutionScale' in gl)gl.transmissionResolutionScale=tier==='low'?.32:tier==='medium'?.42:.52
+        if('transmissionResolutionScale' in gl)gl.transmissionResolutionScale=.25
 
         // WebGL contexts can be lost on mobile Safari after memory pressure,
         // tab suspension or GPU resets. Fail soft instead of leaving a blank hero.
@@ -141,7 +137,7 @@ export function Scene(){
     </Canvas>
 
     <button className="reset-view" onClick={reset} aria-label="Recentrar mapa 3D">recentrar</button>
-    <div className="scene-hint">arraste para girar · toque no núcleo Yin–Yang para explorar · pinça/scroll para aproximar</div>
+    <div className="scene-hint">arraste para girar · clique em um elemento para explorar</div>
 
     <div className={`focus-label ${focus?'on':''}`} aria-live="polite">
       {focus && <>

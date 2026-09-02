@@ -904,3 +904,23 @@ body{background:
 @media(min-width:1500px){
   .app{grid-template-columns:minmax(0,1fr) 540px}
 }
+
+
+/* v0.96 — fixed desktop stage + independent readable UI */
+@media(min-width:1101px){
+  body{overflow:hidden}
+  .app{height:100vh;display:grid;grid-template-columns:clamp(190px,16vw,250px) minmax(520px,700px) minmax(390px,450px);gap:14px;justify-content:center;align-items:stretch;padding:14px;max-width:1480px;margin:0 auto}
+  .desktop-rail{position:relative;min-width:0;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:linear-gradient(180deg,rgba(15,18,22,.80),rgba(8,10,12,.72));padding:22px 18px;display:flex;flex-direction:column;overflow:visible}
+  .desktop-rail .brand{position:static;font-size:12px;line-height:1.25}.desktop-rail .brand-mark{flex:0 0 auto}
+  .desktop-rail-copy{margin:auto 0;display:grid;gap:10px}.desktop-rail-copy span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#b99a5d}.desktop-rail-copy strong{font-family:Georgia,serif;font-weight:400;font-size:clamp(20px,1.8vw,27px);line-height:1.08}.desktop-rail-copy p{font-size:12px;line-height:1.5;color:var(--muted);margin:0}
+  .desktop-rail .workspace-toolbar{position:static;display:grid;justify-items:start;gap:9px}.desktop-rail .role-switch{width:100%;display:grid;grid-template-columns:1fr}.desktop-rail .role-switch button{text-align:left;font-size:10px;padding:9px 10px}.desktop-rail .theme-controls{max-width:100%;flex-wrap:wrap}.desktop-rail-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:9px;line-height:1.45;color:var(--muted)}
+  .desktop-rail .patient-rail-trigger{position:static;margin-top:12px;width:100%;display:flex;gap:9px;padding:10px 11px;min-height:40px}.desktop-rail .patient-rail-trigger small{position:static;opacity:1;background:transparent;padding:0}
+  .scene-pane{position:relative;height:calc(100vh - 28px);min-height:0;border:1px solid rgba(218,181,102,.10);border-radius:24px;overflow:hidden;background:#090b0d;box-shadow:0 20px 70px rgba(0,0,0,.22)}
+  .scene-shell{position:absolute;inset:0}.scene-shell canvas{width:100%!important;height:100%!important}
+  .panel{height:calc(100vh - 28px);padding:0;min-width:0;background:transparent!important}.panel-inner{height:100%;border-radius:22px}.panel-head{padding:26px 26px 14px}.panel-scroll{padding:0 26px 28px}.panel h1{font-size:clamp(30px,2.5vw,38px)}.lead{font-size:14px}.symptom{min-height:58px;font-size:13.5px;padding:13px 12px}.search input{font-size:13.5px}.journey-guide{font-size:9.5px}
+  .scene-hint{left:18px;bottom:16px;font-size:10px;max-width:70%}.reset-view{right:14px;bottom:14px}.focus-label{left:18px;bottom:52px}.focus-char{font-size:42px}.focus-name{font-size:18px}
+}
+@media(min-width:851px) and (max-width:1100px){
+  .desktop-rail{display:none}.app{grid-template-columns:minmax(460px,1fr) minmax(390px,430px)}
+}
+@media(max-width:850px){.desktop-rail{display:none}}

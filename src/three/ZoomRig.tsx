@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import type { InteractionStateRef } from './interactionState'
 
-const HOME=new THREE.Vector3(.2,1.4,10.2)
+const HOME=new THREE.Vector3(0,.55,11.35)
 
 export function ZoomRig({interaction}:{interaction:InteractionStateRef}){
   const {camera,gl}=useThree()
@@ -16,7 +16,7 @@ export function ZoomRig({interaction}:{interaction:InteractionStateRef}){
     const el=gl.domElement
     const clampDistance=()=>{
       const len=camera.position.length()
-      const clamped=THREE.MathUtils.clamp(len,6.8,12.8)
+      const clamped=THREE.MathUtils.clamp(len,10.65,11.85)
       camera.position.setLength(clamped)
     }
     const markManual=()=>{
@@ -26,7 +26,7 @@ export function ZoomRig({interaction}:{interaction:InteractionStateRef}){
     const wheel=(e:WheelEvent)=>{
       e.preventDefault()
       markManual()
-      const factor=1+Math.sign(e.deltaY)*.065
+      const factor=1+Math.sign(e.deltaY)*.022
       camera.position.multiplyScalar(factor)
       clampDistance()
     }
@@ -54,7 +54,7 @@ export function ZoomRig({interaction}:{interaction:InteractionStateRef}){
         const d=Math.hypot(dx,dy)
         if(prevDist.current){
           const ratio=prevDist.current/d
-          camera.position.multiplyScalar(THREE.MathUtils.clamp(ratio,.92,1.08))
+          camera.position.multiplyScalar(THREE.MathUtils.clamp(ratio,.975,1.025))
           clampDistance()
         }
         prevDist.current=d

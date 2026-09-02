@@ -40,13 +40,18 @@ export default function App(){
       <ExperienceShell>
         <div className="page">
           <main className="app">
-            <section className="scene-pane">
-              <div className="experience-toolbar">
-                <div className="brand"><span className="brand-mark">五</span><span>Wu Xing · mapa interativo</span></div>
-                <div className="workspace-toolbar"><RoleSwitcher/>
-              <KnowledgePortal/><ThemeControls/></div>
+            <aside className="desktop-rail">
+              <div className="brand"><span className="brand-mark">五</span><span>Wu Xing · mapa interativo</span></div>
+              <div className="desktop-rail-copy">
+                <span>Mapa clínico visual</span>
+                <strong>Os Cinco Movimentos em uma leitura única.</strong>
+                <p>O mapa permanece inteiro e estável enquanto você navega pela anamnese.</p>
               </div>
+              <div className="workspace-toolbar"><RoleSwitcher/><KnowledgePortal/><ThemeControls/></div>
               <PatientRail/>
+              <div className="desktop-rail-foot">Arraste para girar · clique nos elementos para explorar</div>
+            </aside>
+            <section className="scene-pane">
               <AtomErrorBoundary><Scene/></AtomErrorBoundary>
             </section>
             <aside className="panel">

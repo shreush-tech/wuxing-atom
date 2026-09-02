@@ -23,8 +23,8 @@ export function CameraRig({
 
     const aspect=size.width/Math.max(1,size.height)
     const portrait=aspect<.82
-    const neutralZ=portrait?11.85:10.2
-    const neutralY=portrait?.30:1.4
+    const neutralZ=portrait?11.65:11.35
+    const neutralY=portrait?.18:.55
     let desiredPos:THREE.Vector3|null=null
     let desiredTarget=new THREE.Vector3(0,portrait?.10:0,0)
 
@@ -42,7 +42,7 @@ export function CameraRig({
       desiredTarget=p.clone()
       desiredPos=p.clone().normalize().multiplyScalar(portrait?8.35:7.6).add(new THREE.Vector3(0,portrait?.55:1.15,0))
     } else if(resultMode){
-      desiredPos=new THREE.Vector3(portrait?.12:.6,portrait?.28:1.1,portrait?10.75:9.0)
+      desiredPos=new THREE.Vector3(0,portrait?.18:.55,portrait?11.45:11.05)
     } else if(!interaction.current.manualCamera){
       desiredPos=new THREE.Vector3(portrait?0:.2,neutralY,neutralZ)
     }
