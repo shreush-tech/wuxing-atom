@@ -40,11 +40,11 @@ export default function App(){
         <div className="page">
           <main className="app">
             <aside className="desktop-rail">
-              <div className="brand"><span className="brand-mark">五</span><span>Wu Xing · mapa interativo</span></div>
+              <div className="brand"><span className="brand-mark">五</span><span>Wu Xing · Reushtech</span></div>
               <div className="desktop-rail-copy">
-                <span>Mapa clínico visual</span>
-                <strong>Os Cinco Movimentos em uma leitura única.</strong>
-                <p>O mapa permanece inteiro e estável enquanto você navega pela anamnese.</p>
+                <span>Constelação clínica</span>
+                <strong>The Five Gems · Cinco Movimentos, uma leitura.</strong>
+                <p>As cinco gemas permanecem visíveis enquanto você constrói sua constelação de sintomas.</p>
               </div>
               <div className="workspace-toolbar"><RoleSwitcher/><KnowledgePortal/></div>
               <PatientRail/>

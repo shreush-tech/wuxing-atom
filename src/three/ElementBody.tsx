@@ -72,6 +72,8 @@ function PlanetGem({id,onSelect,focused}:{id:ElementId,onSelect:(id:ElementId)=>
     <mesh ref={stone} rotation={[.05,.15,.02]}>
       <sphereGeometry args={[.79,28,20]}/><meshPhysicalMaterial map={texture||undefined} color={g.base} emissive={g.emissive} emissiveIntensity={active?.55:.25} metalness={g.metalness} roughness={g.roughness} clearcoat={.82} clearcoatRoughness={.16}/>
     </mesh>
+    <mesh scale={.70}><sphereGeometry args={[.79,20,14]}/><meshBasicMaterial color={g.light} transparent opacity={active?.075:.035} depthWrite={false} blending={THREE.AdditiveBlending}/></mesh>
+    <mesh scale={1.018}><sphereGeometry args={[.79,24,16]}/><meshPhysicalMaterial color={g.light} transparent opacity={.055} roughness={.08} metalness={.08} depthWrite={false}/></mesh>
     <mesh ref={shine} position={[-.28,.30,.68]}><sphereGeometry args={[.105,12,8]}/><meshBasicMaterial color="#fff8dc" transparent opacity={.72} depthWrite={false} blending={THREE.AdditiveBlending}/></mesh>
     <mesh ref={ring} rotation={[1.12,.18,.46]}><torusGeometry args={[.94,.024,7,64]}/><meshBasicMaterial color="#f0c86e" transparent opacity={.28} depthWrite={false} blending={THREE.AdditiveBlending}/></mesh>
     {glyph&&<sprite position={[0,0,.81]} scale={[.68,.68,1]} renderOrder={8}><spriteMaterial map={glyph} transparent depthTest={false} depthWrite={false} opacity={active?1:.86}/></sprite>}

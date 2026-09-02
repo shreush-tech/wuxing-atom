@@ -8,6 +8,7 @@ import { LowBackDifferentialNote } from './LowBackDifferentialNote'
 import { ResultGateway } from './ResultGateway'
 import { SimpleJourney } from './SimpleJourney'
 import { searchBookIndex } from '../content/bookIndex'
+import { searchClinicalDiagnoses } from '../clinical/clinicalDiagnoses'
 
 const norm=(s:string)=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 
@@ -25,7 +26,7 @@ const groups=[
 ]
 
 export function SymptomExplorer(){
-  const {selected,setAnswer,clinical,clear}=useClinical()
+  const {selected,setAnswer,clinical,clear,clinicalDiagnosisIds,toggleClinicalDiagnosis}=useClinical()
   const [search,setSearch]=useState('')
   const [showMore,setShowMore]=useState(false)
   const [activeGroup,setActiveGroup]=useState<string|null>(null)
@@ -38,12 +39,12 @@ export function SymptomExplorer(){
   const searchResults=useMemo(()=>{
     if(!search.trim()) return []
     const q=norm(search)
-    return symptoms.filter(s=>s.category!=='seguranca').filter(s=>{
-      const hay=[s.label,...(s.aliases||[])].map(norm).join(' ')
-      return hay.includes(q)
-    }).slice(0,16)
+    const exact=symptoms.filter(s=>s.category!=='seguranca').filter(s=>{const hay=[s.label,...(s.aliases||[])].map(norm).join(' ');return hay.includes(q)||q.includes(norm(s.label))})
+    if(q.includes('dor')){const generic=symptoms.find(s=>s.id==='pain_general');if(generic&&!exact.some(x=>x.id===generic.id))exact.unshift(generic)}
+    return exact.slice(0,16)
   },[search])
   const referenceResults=useMemo(()=>search.trim()?searchBookIndex(search).slice(0,10):[],[search])
+  const spokenDiagnoses=useMemo(()=>search.trim()?searchClinicalDiagnoses(search).slice(0,8):[],[search])
   const groupedSymptoms=useMemo(()=>{
     const g=groups.find(x=>x.id===activeGroup)
     if(!g)return []
@@ -75,8 +76,8 @@ export function SymptomExplorer(){
     <div className="sheet-handle" aria-hidden="true"></div>
     <div className="panel-head">
       <div className="eyebrow">Leitura educativa · Medicina Chinesa</div>
-      <h1>O que mais está incomodando você?</h1>
-      <p className="lead">Marque apenas o que realmente percebe. Poucos sinais bem escolhidos já podem gerar uma primeira leitura.</p>
+      <h1>Construa sua constelação de sintomas</h1>
+      <p className="lead">Selecione sinais e sintomas que você percebe hoje. Dor recebe destaque porque pode coexistir com outras queixas clínicas.</p>
     </div>
 
     <div className="panel-scroll">
@@ -104,11 +105,12 @@ export function SymptomExplorer(){
       </div>
       <div className="voice-assistant">
         <span className="voice-assistant-badge">Assistente por voz</span>
-        <p>{voiceNote||'Toque em Falar e descreva seus sintomas. A fala vira busca; você confirma os sintomas antes de eles entrarem no mapa.'}</p>
+        <p>{voiceNote||'Toque em Falar e conte sua história. A fala procura sinais, sintomas e diagnósticos clínicos já existentes no banco; você confirma antes de incluir.'}</p>
       </div>
       {search && <div className="symptom-grid search-results">
         {searchResults.map(s=><button key={s.id} className={`symptom ${selected[s.id]==='yes'?'selected':''}`} onClick={()=>setAnswer(s.id,selected[s.id]==='yes'?'unknown':'yes')}>{s.label}</button>)}
       </div>}
+      {search && !!spokenDiagnoses.length && <div className="spoken-diagnoses"><div className="section-title">Diagnósticos clínicos reconhecidos na sua fala · confirme se já foram diagnosticados</div><div className="clinical-diagnoses__results">{spokenDiagnoses.map(d=><button key={d.id} className={clinicalDiagnosisIds.includes(d.id)?'diagnosis-chip selected':'diagnosis-chip'} onClick={()=>toggleClinicalDiagnosis(d.id)}>{d.label}</button>)}</div></div>}
       {search && !!referenceResults.length && <div className="reference-index-results">
         <div className="section-title">Condições e sintomas no índice do livro-base</div>
         <div className="reference-index-grid">{referenceResults.map(item=><div key={item.id} className="reference-index-chip"><strong>{item.labelPt}</strong><span>{item.bookLabel}</span></div>)}</div>
@@ -123,7 +125,7 @@ export function SymptomExplorer(){
         </div>
         {clinical.interview.canShowResult&&<div className="quick-map-cta">
           <div><strong>Já dá para fazer uma primeira leitura.</strong><span>Você pode parar aqui ou responder mais 3 perguntas.</span></div>
-          <button type="button" onClick={goMap}>OK · ver meu mapa</button>
+          <button type="button" onClick={goMap}>OK · ver meu equilíbrio</button>
         </div>}
       </>}
 

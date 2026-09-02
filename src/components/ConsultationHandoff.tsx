@@ -15,7 +15,7 @@ export function ConsultationHandoff(){
     <div className="handoff" onClick={e=>e.stopPropagation()}>
       <button className="handoff-close" onClick={()=>setOpen(false)}>×</button>
       <div className="aftercare-kicker">Consulta de acupuntura</div>
-      <h3>Seu mapa pode acompanhar você</h3>
+      <h3>Seu equilíbrio orgânico pode acompanhar você</h3>
       <p>O site pode encaminhar um resumo das respostas e das duas hipóteses principais para a etapa de agendamento. O protótipo ainda não envia dados pessoais nem agenda automaticamente.</p>
       <div className="handoff-summary"><strong>Hipóteses atuais</strong><span>{top.join(' · ')}</span></div>
       <button className="primary-cta" type="button">Continuar para agendamento</button>

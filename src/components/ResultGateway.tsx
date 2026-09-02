@@ -9,7 +9,7 @@ export function ResultGateway(){
   const initial=clinical.interview.readingReadiness==='initial'
 
   return <div className={`result-gateway ${initial?'initial':''}`}>
-    <span>{initial?'Seu mapa já tem uma primeira forma':'Seu mapa está pronto para uma primeira leitura'}</span>
+    <span>{initial?'Seu equilíbrio orgânico já tem uma primeira forma':'Seu equilíbrio orgânico está pronto para uma primeira leitura'}</span>
     <strong>{initial?'Quer ver agora ou diferenciar melhor?':'Veja o que apareceu — e refine se quiser.'}</strong>
     <div className="result-gateway-actions">
       <button type="button" className="primary" onClick={go}>Ver meu mapa agora</button>

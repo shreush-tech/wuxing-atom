@@ -124,6 +124,7 @@ export const symptoms: Symptom[] = [
 
   // Additional lay-observable discriminators recovered from pain, neurologic,
   // cardiovascular and throat tables.
+  {id:'pain_general',label:'Dor',category:'dor',aliases:['dor','estou com dor','dolorido','doendo','dor em algum lugar']},
   {id:'joint_pain',label:'Dor nas articulações',category:'dor',aliases:['dor articular']},
   {id:'joint_swelling',label:'Articulação inchada',category:'dor',aliases:['junta inchada']},
   {id:'joint_red',label:'Articulação vermelha e quente',category:'dor',aliases:['junta vermelha']},
@@ -252,6 +253,6 @@ export const symptoms: Symptom[] = [
 ]
 
 export const primarySymptomIds = [
-  'bloating','fatigue','poor_sleep','stress','headache','constipation',
+  'pain_general',  'bloating','fatigue','poor_sleep','stress','headache','constipation',
   'diarrhea','reflux','cold','dizziness','short_breath','low_back'
 ]

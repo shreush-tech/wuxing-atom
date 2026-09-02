@@ -8,7 +8,6 @@ import { complaintOverlays } from './complaintRuleOverlays'
 import { scoreHallmarks } from './hallmarkDiscriminators'
 import { scoreAuthorTranscriptRules } from './authorTranscriptRules'
 import { selectMultiSystemDiagnoses, flattenActivePatterns } from './multiSystemDifferential'
-import { computeCompoundDiagnoses } from './compoundPatternGraph'
 import { scoreContextualPatterns } from './contextualPatternFamilies'
 import { resolveClinicalContexts } from './clinicalContext'
 import {computePatternRelationships,relationshipQuestionPriority} from './patternRelationships'
@@ -165,7 +164,8 @@ export function computeClinicalState(selected:Record<string,AnswerState>):Clinic
 
   const systemDiagnoses=selectMultiSystemDiagnoses(patternList)
   const activePatterns=flattenActivePatterns(systemDiagnoses)
-  const compoundDiagnoses=computeCompoundDiagnoses(clinicalSelected,patternList)
+  // Atomic-pattern principle: relationships explain coexistence but never manufacture a compound diagnosis.
+  const compoundDiagnoses=[]
   const clinicalContexts=resolveClinicalContexts(clinicalSelected)
   const contextualDiagnoses=scoreContextualPatterns(clinicalSelected,clinicalContexts)
 

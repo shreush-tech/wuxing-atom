@@ -1,7 +1,7 @@
 {
   "name": "wuxing-atom",
   "private": true,
-  "version": "0.99.0-celestial-interaction",
+  "version": "1.0.0-reushtech-five-gems",
   "type": "module",
   "scripts": {
     "unpack": "rm -rf src && tar -xzf src.tar.gz",
