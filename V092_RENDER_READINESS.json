@@ -1,0 +1,27 @@
+{
+  "version": "0.92-render-candidate",
+  "typescript_preflight": true,
+  "checks": {
+    "drag_rotation": true,
+    "release_inertia": true,
+    "rotation_clamps": true,
+    "reset_rotation": true,
+    "pinch_zoom": true,
+    "wheel_zoom": true,
+    "zoom_clamp": true,
+    "reset_camera": true,
+    "double_tap_reset": true,
+    "eight_golden_orbits": true,
+    "moving_energy_particles": true,
+    "moving_energy_streaks": true,
+    "three_star_depth_shells": true,
+    "yin_yang_shader": true,
+    "yin_yang_opposite_seeds": true,
+    "glass_transmission": true,
+    "quality_tiering": true,
+    "webgl_loss_fallback": true,
+    "fire_apex_anchor": true
+  },
+  "passed": 19,
+  "total": 19
+}

@@ -1,0 +1,11 @@
+{
+  "version": "0.90-fuzz",
+  "randomRuns": 50000,
+  "symptomIds": 219,
+  "uniqueSymptomIds": 219,
+  "failures": [],
+  "coexistenceRelationshipsObserved": 11920,
+  "rootBranchRelationshipsObserved": 19969,
+  "differentialRelationshipsObserved": 8216,
+  "readyResultsWithKidneyYinYangCoexistence": 2504
+}

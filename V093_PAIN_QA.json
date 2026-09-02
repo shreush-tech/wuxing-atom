@@ -1,0 +1,17 @@
+{
+  "version": "0.93",
+  "checks": {
+    "independent_pain_field": true,
+    "pain_checkbox": true,
+    "multiple_pain_locations": true,
+    "per_location_intensity_0_10": true,
+    "gold_visual_scale": true,
+    "pain_saved_per_session": true,
+    "longitudinal_pain_by_location": true,
+    "pain_does_not_directly_weight_elements": true,
+    "existing_specific_pain_symptoms_remain_available": true,
+    "typescript_preflight": true
+  },
+  "passed": 10,
+  "total": 10
+}

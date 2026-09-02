@@ -1,0 +1,37 @@
+{
+  "version": "0.89",
+  "passed": 5,
+  "total": 5,
+  "results": [
+    {
+      "name": "kidney yin/yang tension",
+      "pass": true,
+      "questions": [
+        "five_center_heat",
+        "night_sweats",
+        "small_sips",
+        "cold",
+        "cold_feet",
+        "early_morning_diarrhea",
+        "clear_urine"
+      ]
+    },
+    {
+      "name": "answered differential removes pending questions",
+      "pass": true
+    },
+    {
+      "name": "large score gap suppresses false tension",
+      "pass": true
+    },
+    {
+      "name": "25 patients x 12 sessions replay integrity",
+      "pass": true,
+      "sessions": 300
+    },
+    {
+      "name": "cross-patient historical replay blocked",
+      "pass": true
+    }
+  ]
+}

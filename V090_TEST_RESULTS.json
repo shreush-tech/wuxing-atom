@@ -1,0 +1,50 @@
+{
+  "version": "0.90",
+  "passed": 5,
+  "total": 5,
+  "results": [
+    {
+      "name": "Kidney Yin and Yang coexist",
+      "pass": true
+    },
+    {
+      "name": "Liver Yin + Yang Rising coexist as root/branch",
+      "pass": true
+    },
+    {
+      "name": "Liver Blood + Yang Rising coexist",
+      "pass": true
+    },
+    {
+      "name": "Kidney coexistence survives end-to-end engine",
+      "pass": true,
+      "top": [
+        [
+          "kidney_yang",
+          7
+        ],
+        [
+          "kidney_yin",
+          6
+        ],
+        [
+          "heart_yin",
+          5.5
+        ],
+        [
+          "stomach_yin",
+          4
+        ],
+        [
+          "kidney_qi_not_firm",
+          4
+        ]
+      ],
+      "canShowResult": true
+    },
+    {
+      "name": "Liver root/branch survives end-to-end engine",
+      "pass": true
+    }
+  ]
+}

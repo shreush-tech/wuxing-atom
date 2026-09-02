@@ -1,0 +1,18 @@
+{
+  "version": "0.94",
+  "typescript": true,
+  "features": {
+    "patient_scoped_history": true,
+    "session_snapshots": true,
+    "five_element_longitudinal_chart": true,
+    "symptom_trajectory": true,
+    "pain_by_location_trajectory": true,
+    "pattern_longitudinal_view": true,
+    "historical_map_reopen": true,
+    "patient_name_header": true,
+    "demo_background_persistence": true,
+    "production_health_storage_not_falsely_certified": true
+  },
+  "passed": 11,
+  "total": 11
+}

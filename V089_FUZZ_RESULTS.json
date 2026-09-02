@@ -1,0 +1,122 @@
+{
+  "version": "0.89-engine-fuzz",
+  "randomRuns": 30000,
+  "failures": [],
+  "tensionOccurrences": 4736,
+  "strongTensionOccurrences": 975,
+  "nonEligibleRuns": 24675,
+  "eligibleRuns": 5325,
+  "targetedResults": [
+    {
+      "name": "Kidney Yin+Yang unresolved",
+      "pass": true,
+      "tension": "kidney_yin_vs_yang",
+      "canShowResult": false,
+      "nextQuestions": [
+        "small_sips",
+        "clear_urine",
+        "tinnitus",
+        "restlessness"
+      ]
+    },
+    {
+      "name": "Lung external heat+cold unresolved",
+      "pass": true,
+      "tension": "lung_wind_heat_vs_cold",
+      "canShowResult": true,
+      "nextQuestions": [
+        "thick_phlegm",
+        "worse_cold"
+      ]
+    },
+    {
+      "name": "Large Intestine heat+cold unresolved",
+      "pass": false,
+      "tension": null,
+      "canShowResult": true,
+      "nextQuestions": [
+        "smelly_diarrhea_mucus",
+        "burning_anus",
+        "watery_urgent_diarrhea",
+        "dry_stool"
+      ]
+    }
+  ],
+  "guardSamples": [
+    {
+      "name": "isolated bitter taste",
+      "results": [
+        {
+          "id": "mouth_ulcer_not_exclusive",
+          "ok": true
+        },
+        {
+          "id": "bitter_taste_not_exclusive",
+          "ok": false
+        },
+        {
+          "id": "bleeding_gums_context",
+          "ok": true
+        },
+        {
+          "id": "insomnia_multisystem",
+          "ok": true
+        },
+        {
+          "id": "safety_precedes_tcm",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "bitter taste with liver context",
+      "results": [
+        {
+          "id": "mouth_ulcer_not_exclusive",
+          "ok": true
+        },
+        {
+          "id": "bitter_taste_not_exclusive",
+          "ok": true
+        },
+        {
+          "id": "bleeding_gums_context",
+          "ok": true
+        },
+        {
+          "id": "insomnia_multisystem",
+          "ok": true
+        },
+        {
+          "id": "safety_precedes_tcm",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "mouth ulcer isolated",
+      "results": [
+        {
+          "id": "mouth_ulcer_not_exclusive",
+          "ok": false
+        },
+        {
+          "id": "bitter_taste_not_exclusive",
+          "ok": true
+        },
+        {
+          "id": "bleeding_gums_context",
+          "ok": true
+        },
+        {
+          "id": "insomnia_multisystem",
+          "ok": true
+        },
+        {
+          "id": "safety_precedes_tcm",
+          "ok": true
+        }
+      ]
+    }
+  ]
+}

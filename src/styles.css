@@ -1,0 +1,8 @@
+
+/* v0.79 cosmic / reference-index pass */
+.reference-index-results{margin-top:14px;padding:14px;border:1px solid rgba(215,168,77,.18);border-radius:16px;background:rgba(10,12,14,.46)}
+.reference-index-grid{display:flex;flex-wrap:wrap;gap:8px}
+.reference-index-chip{display:flex;flex-direction:column;gap:2px;max-width:240px;padding:9px 11px;border-radius:12px;border:1px solid rgba(215,168,77,.16);background:rgba(255,255,255,.025)}
+.reference-index-chip strong{font-size:.84rem;font-weight:560;color:var(--text)}
+.reference-index-chip span{font-size:.68rem;opacity:.5}
+.reference-index-note{margin-top:10px;font-size:.72rem;line-height:1.45;opacity:.58}

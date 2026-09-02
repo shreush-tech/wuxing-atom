@@ -1,0 +1,516 @@
+{
+  "version": "0.85",
+  "source": "user_supplied_structured_transcript_report_AcuPro_Academy",
+  "source_policy": {
+    "status": "secondary_primary_source_for_anamnesis_theory_and_author_teaching",
+    "book_priority": "uploaded reference book remains primary for condition-pattern treatment tables",
+    "do_not_silently_reconcile_conflicts": true,
+    "patient_flow_exclusions": [
+      "pulse",
+      "tongue"
+    ],
+    "clinical_diagnosis_direct_element_weight": 0,
+    "clinical_diagnosis_direct_pattern_weight": 0
+  },
+  "modules": [
+    {
+      "id": "shu_transport",
+      "title": "5 Pontos de Transporte (Shu Antigos)",
+      "role": "point_theory",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "point_combinations",
+      "title": "7 Combinações Poderosas",
+      "role": "treatment_reference",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "diagnostic_framework",
+      "title": "9 Etapas para Diagnóstico",
+      "role": "diagnostic_framework",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "back_shu_front_mu",
+      "title": "Shu Dorsais e Mu Frontais",
+      "role": "point_theory",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "common_symptom_differentiation",
+      "title": "10 Sintomas Comuns",
+      "role": "anamnesis",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "liver_qi_stagnation",
+      "title": "Estagnação do Qi do Fígado",
+      "role": "pattern_deep_dive",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "spleen_qi_deficiency",
+      "title": "Deficiência do Qi do Baço",
+      "role": "pattern_deep_dive",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "damp_phlegm_points",
+      "title": "12 Pontos para Umidade e Fleuma",
+      "role": "treatment_reference",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "distal_points",
+      "title": "9 Pontos Distais Essenciais",
+      "role": "point_theory",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "ghost_points",
+      "title": "13 Pontos Fantasmas",
+      "role": "historical_author_teaching",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "luo_points",
+      "title": "Pontos Luo",
+      "role": "point_theory",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "five_spirits",
+      "title": "5 Espíritos",
+      "role": "educational_theory",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "xi_cleft",
+      "title": "Pontos Xi-Cleft",
+      "role": "point_theory",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "clear_heat_points",
+      "title": "15 Pontos para Limpar Calor",
+      "role": "treatment_reference",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "liver_channel_top5",
+      "title": "Top 5 Canal do Fígado",
+      "role": "point_reference",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "spleen_channel_top5",
+      "title": "Top 5 Canal do Baço",
+      "role": "point_reference",
+      "source_type": "author_transcript"
+    },
+    {
+      "id": "womens_health",
+      "title": "Saúde da Mulher",
+      "role": "clinical_teaching",
+      "source_type": "author_transcript"
+    }
+  ],
+  "diagnostic_pipeline": [
+    "Eight Principles / Yin-Yang",
+    "Five Elements",
+    "Vital Substances",
+    "Zang-Fu",
+    "Pathogenic Factors",
+    "Six Stages (contextual when applicable)",
+    "Four Levels (contextual when applicable)",
+    "San Jiao",
+    "Channels / meridian distribution",
+    "Pattern differential",
+    "Book-grounded treatment composition"
+  ],
+  "point_systems": {
+    "shu_transport": {
+      "sequence": [
+        "Jing-Well",
+        "Ying-Spring",
+        "Shu-Stream",
+        "Jing-River",
+        "He-Sea"
+      ],
+      "teaching_metaphor": "water flow increasing in volume and depth from extremities inward",
+      "author_rules": [
+        "Deficiency: tonify Mother point within affected channel",
+        "Excess: sedate/clear Child point within affected channel"
+      ],
+      "examples": [
+        {
+          "context": "Liver Fire excess",
+          "point": "LV2",
+          "reason": "Fire/Child point on Liver/Wood channel"
+        },
+        {
+          "context": "Lung/Metal deficiency",
+          "point": "LU9",
+          "reason": "Earth/Mother point on Lung channel"
+        }
+      ]
+    },
+    "combinations": [
+      {
+        "name": "Four Gates",
+        "points": [
+          "LV3",
+          "LI4"
+        ],
+        "author_uses": [
+          "acute pain",
+          "stress",
+          "PMS",
+          "constipation"
+        ],
+        "safety": [
+          "LI4 pregnancy caution per transcript"
+        ]
+      },
+      {
+        "name": "Damp/Phlegm pair",
+        "points": [
+          "SP9",
+          "ST40"
+        ],
+        "author_uses": [
+          "dampness",
+          "phlegm"
+        ]
+      },
+      {
+        "name": "Qi lifting",
+        "points": [
+          "REN6",
+          "SP6",
+          "DU20"
+        ],
+        "author_uses": [
+          "severe fatigue",
+          "prolapse"
+        ],
+        "safety": [
+          "SP6 pregnancy caution per transcript"
+        ]
+      },
+      {
+        "name": "Digestive Diamond",
+        "points": [
+          "REN6",
+          "REN9",
+          "ST25"
+        ],
+        "alternatives": [
+          "REN12"
+        ],
+        "author_uses": [
+          "GI complaints",
+          "IBS",
+          "distension"
+        ]
+      },
+      {
+        "name": "Female hormonal extraordinary-vessel set",
+        "points": [
+          "LU7",
+          "KD6",
+          "SP4",
+          "PC6"
+        ]
+      },
+      {
+        "name": "Acute menstrual Xi-Cleft trio",
+        "points": [
+          "SP8",
+          "LV6",
+          "KD5"
+        ]
+      },
+      {
+        "name": "Buddha Triangle",
+        "points": [
+          "PC6",
+          "HT7",
+          "LU9"
+        ],
+        "author_uses": [
+          "anxiety",
+          "depression",
+          "grief/chest oppression"
+        ]
+      }
+    ],
+    "xi_cleft": {
+      "principle": {
+        "yang_channels": "acute pain",
+        "yin_channels": "acute pain + Blood disorders per author teaching"
+      },
+      "examples": {
+        "ST34": "stomach pain",
+        "BL63": "acute cystitis",
+        "GB36": "leg pain/mania",
+        "SP8": "severe menstrual pain",
+        "KD5": "severe menstrual pain",
+        "LU6": "coughing blood",
+        "LV6": "abnormal uterine bleeding",
+        "PC4": "chest pain/vomiting blood",
+        "HT6": "night sweating/heart pain"
+      }
+    }
+  },
+  "anamnesis_discriminators": {
+    "sleep": [
+      [
+        "difficulty falling asleep",
+        "Blood Deficiency involving Spleen/Heart",
+        "author_transcript"
+      ],
+      [
+        "waking 1-3am",
+        "Liver stagnation/stress teaching",
+        "author_transcript"
+      ],
+      [
+        "dream-disturbed sleep",
+        "Heart Yin Deficiency",
+        "author_transcript"
+      ],
+      [
+        "nightmares",
+        "Phlegm-Fire disturbing Heart",
+        "author_transcript"
+      ]
+    ],
+    "sweat": [
+      [
+        "night sweats",
+        "Yin Deficiency",
+        "author_transcript"
+      ],
+      [
+        "spontaneous daytime sweat",
+        "Heart Qi Deficiency",
+        "author_transcript"
+      ],
+      [
+        "absence of sweat with exertion",
+        "Heart Blood Deficiency",
+        "author_transcript"
+      ]
+    ],
+    "energy": [
+      [
+        "morning tiredness",
+        "Spleen Qi Deficiency",
+        "author_transcript"
+      ],
+      [
+        "constant total exhaustion",
+        "Yang Deficiency",
+        "author_transcript"
+      ],
+      [
+        "mental fatigue/poor focus",
+        "Liver Qi Stagnation affecting Spleen",
+        "author_transcript"
+      ]
+    ],
+    "pain": [
+      [
+        "fixed stabbing pain",
+        "Blood Stasis",
+        "author_transcript"
+      ],
+      [
+        "moving pain",
+        "Qi stagnation / Wind teaching",
+        "author_transcript"
+      ],
+      [
+        "better with warmth",
+        "Cold pattern",
+        "author_transcript"
+      ],
+      [
+        "better with cold",
+        "Heat pattern",
+        "author_transcript"
+      ]
+    ],
+    "thirst": [
+      [
+        "large gulps",
+        "Excess Heat",
+        "author_transcript"
+      ],
+      [
+        "small sips",
+        "Yin-deficiency Heat",
+        "author_transcript"
+      ]
+    ]
+  },
+  "pattern_enrichment": {
+    "Liver Qi Stagnation": {
+      "signs": [
+        "irritability",
+        "frequent sighing",
+        "plum-pit sensation",
+        "shoulder/jaw tension",
+        "spasm",
+        "feeling stuck"
+      ],
+      "possible_progressions": [
+        "Liver Fire",
+        "Blood Stasis",
+        "Liver affecting Spleen",
+        "Liver affecting Stomach"
+      ],
+      "author_points": [
+        "LV3",
+        "LI4",
+        "GB34",
+        "LV14",
+        "SP6"
+      ],
+      "author_lifestyle": [
+        "physical movement"
+      ],
+      "author_diet": [
+        "sour foods such as lemon"
+      ],
+      "author_formula_reference": [
+        "Xiao Yao San"
+      ]
+    },
+    "Spleen Qi Deficiency": {
+      "signs": [
+        "fatigue",
+        "loose stools",
+        "post-meal distension",
+        "edema",
+        "puffy eyelids",
+        "sweet craving",
+        "easy bruising",
+        "prolapse"
+      ],
+      "possible_progressions": [
+        "Dampness/Phlegm",
+        "Blood Deficiency",
+        "Qi sinking"
+      ],
+      "author_points": [
+        "SP3",
+        "ST36",
+        "SP6"
+      ],
+      "author_diet": [
+        "cooked foods",
+        "soups",
+        "ginger",
+        "avoid excess sugar",
+        "avoid dairy"
+      ]
+    }
+  },
+  "five_spirits": {
+    "Hun": {
+      "element": "Wood",
+      "zang": "Liver",
+      "balanced": [
+        "vision",
+        "creativity",
+        "clear goals"
+      ],
+      "imbalance": [
+        "anger",
+        "lack of purpose"
+      ],
+      "author_points": [
+        "LV3",
+        "GB24"
+      ]
+    },
+    "Po": {
+      "element": "Metal",
+      "zang": "Lung",
+      "balanced": [
+        "body-mind connection",
+        "survival instinct"
+      ],
+      "imbalance": [
+        "insecurity",
+        "phobias",
+        "difficulty with embodied letting-go"
+      ],
+      "author_points": [
+        "LU9",
+        "LU3"
+      ]
+    },
+    "Yi": {
+      "element": "Earth",
+      "zang": "Spleen",
+      "balanced": [
+        "focus",
+        "logic",
+        "problem solving"
+      ],
+      "imbalance": [
+        "obsession",
+        "mental fog"
+      ],
+      "author_points": [
+        "ST40",
+        "SP6"
+      ]
+    },
+    "Zhi": {
+      "element": "Water",
+      "zang": "Kidney",
+      "balanced": [
+        "resilience",
+        "determination"
+      ],
+      "imbalance": [
+        "indecision",
+        "paralyzing fear"
+      ],
+      "author_points": [
+        "KD3",
+        "GB24"
+      ]
+    },
+    "Shen": {
+      "element": "Fire",
+      "zang": "Heart",
+      "balanced": [
+        "joy",
+        "inner calm",
+        "clarity/presence"
+      ],
+      "imbalance": [
+        "anxiety",
+        "insomnia",
+        "agitation"
+      ],
+      "author_points": [
+        "HT7",
+        "Yin Tang"
+      ]
+    }
+  },
+  "safety_and_claim_handling": {
+    "ghost_points": "Store as historical/author teaching; do not present trauma-to-point associations as established biomedical facts.",
+    "pregnancy": "Preserve transcript cautions for LI4 and SP6; clinician layer only.",
+    "needling_direction": "Do not expose needling direction/depth/manipulation in patient self-care.",
+    "acute_bleeding_or_emergency_examples": "Clinician reference only; never replace urgent conventional assessment.",
+    "diet": "Tag as author/source recommendation; do not convert to validated biomedical therapeutic claim."
+  }
+}

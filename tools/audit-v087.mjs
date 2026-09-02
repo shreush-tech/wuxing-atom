@@ -1,0 +1,40 @@
+import fs from 'node:fs'
+import path from 'node:path'
+
+const root=path.resolve(process.cwd())
+const read=p=>fs.readFileSync(path.join(root,p),'utf8')
+const checks=[]
+const ok=(name,pass,detail='')=>checks.push({name,pass,detail})
+
+const app=read('src/App.tsx')
+const model=read('src/workspace/model.ts')
+const notebook=read('src/workspace/SessionNotebook.tsx')
+const repo=read('src/workspace/repository.ts')
+const rail=read('src/workspace/PatientRail.tsx')
+const core=read('src/workspace/clinicianPointCore.ts')
+const safety=read('src/clinical/safetyGate.ts')
+
+ok('WorkspaceProvider wraps the experience',app.includes('<WorkspaceProvider><ClinicalProvider>'))
+ok('Patient rail is mounted',app.includes('<PatientRail/>'))
+ok('Session notebook is mounted',app.includes('<SessionNotebook/>'))
+ok('Longitudinal timeline is mounted',app.includes('<PatientTimeline/>'))
+ok('Role switch is mounted',app.includes('<RoleSwitcher/>'))
+ok('Patient mode clears clinician chart identity',model.includes("role,activePatientId:null"))
+ok('Default repository does not silently persist health data',repo.includes('MemoryWorkspaceRepository') && repo.includes("demoStorage')==='1"))
+ok('Demo browser persistence is explicitly marked non-production',repo.includes('Never use this adapter for production health data'))
+ok('Clinician recommendations do not use patient acupressure module',!notebook.includes('practicalRecommendations') && !notebook.includes('acupressurePoints'))
+ok('Clinician recommendation core has verified-scope marker',core.includes("scope:'verified_pattern_core'"))
+ok('Recommended points are deduplicated with preserved reasons',core.includes('reasons:PatternId[]') && core.includes('existing.reasons.push'))
+ok('Session stores answers snapshot',notebook.includes('answers:{...selected}'))
+ok('Session stores element snapshot',notebook.includes('elements:structuredClone(clinical.elements)'))
+ok('Session stores points actually used',notebook.includes('usedPoints:used.map'))
+ok('Session stores practitioner note',notebook.includes('clinicianNote:note.trim()'))
+ok('Session stores symptom-burden trajectory value',notebook.includes('symptomBurden:'))
+ok('Safety still blocks radiating chest pain',safety.includes("chest_pain_radiates_arm"))
+ok('Safety still blocks facial weakness',safety.includes("facial_weakness"))
+ok('Patient list UI is capped for render discipline',rail.includes('.slice(0,40)'))
+ok('No visible Interações em evidência',!read('src/components/EducationSection.tsx').includes('Interações em evidência'))
+
+const failures=checks.filter(x=>!x.pass)
+console.log(JSON.stringify({version:'0.87',checks,passed:checks.length-failures.length,total:checks.length,failures},null,2))
+process.exit(failures.length?1:0)

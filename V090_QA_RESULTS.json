@@ -1,0 +1,32 @@
+{
+  "version": "0.90",
+  "targeted_tests": {
+    "passed": 5,
+    "total": 5
+  },
+  "fuzz": {
+    "version": "0.90-fuzz",
+    "randomRuns": 50000,
+    "symptomIds": 219,
+    "uniqueSymptomIds": 219,
+    "failures": [],
+    "coexistenceRelationshipsObserved": 11920,
+    "rootBranchRelationshipsObserved": 19969,
+    "differentialRelationshipsObserved": 8216,
+    "readyResultsWithKidneyYinYangCoexistence": 2504
+  },
+  "typescript_relaxed_preflight": "pass",
+  "terminology_checks": {
+    "no_mutual_exclusion_wording_in_main_coexistence_ui": false,
+    "no_old_diagnostic_tension_title": true,
+    "multifactorial_wording_present": true
+  },
+  "core_behavior": {
+    "pattern_scores_remain_independent": true,
+    "coexistence_does_not_block_result": true,
+    "safety_gate_remains_only_blocking_layer": true,
+    "kidney_yin_yang_explicit_relation": true,
+    "liver_yin_yang_rising_root_branch_relation": true,
+    "liver_blood_yang_rising_root_branch_relation": true
+  }
+}

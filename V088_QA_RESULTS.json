@@ -1,0 +1,78 @@
+{
+  "version": "0.88",
+  "focus": "deep integration + break testing",
+  "static_gates": {
+    "passed": 31,
+    "total": 31
+  },
+  "typescript": {
+    "project_no_emit_noImplicitAny_false": "pass",
+    "strict_mode": "historical typing debt remains; not production-certified"
+  },
+  "clinical_fuzz": {
+    "random_runs": 20000,
+    "symptom_ids": 207,
+    "pattern_ids": 61,
+    "invariant_failures": 0,
+    "max_active_patterns_observed": 8,
+    "ambiguous_runs": 775,
+    "result_eligible_runs": 9533,
+    "targeted_safety_cases": 4,
+    "safety_failures": 0
+  },
+  "workspace_stress": {
+    "patients": 100,
+    "sessions": 1000,
+    "expected_sessions_per_patient": 10,
+    "failures": 0,
+    "duplicate_session_id_rejected": true,
+    "duplicate_session_number_rejected": true,
+    "missing_patient_session_rejected": true
+  },
+  "point_parser": {
+    "pt_br_and_international_aliases": "pass",
+    "examples": {
+      "F3/LV3": "LV3",
+      "IG4/LI4": "LI4",
+      "E36/ST36": "ST36",
+      "BP6/SP6": "SP6",
+      "VC6/REN6": "REN6",
+      "VG20/DU20": "DU20"
+    },
+    "alias_deduplication": "pass",
+    "invalid_code_blocks_session_save": "pass"
+  },
+  "corruption_migration": {
+    "malformed_workspace_sanitized": "pass",
+    "invalid_element_metrics_clamped": "pass",
+    "legacy_point_codes_migrated": "pass",
+    "orphan_sessions_dropped": "pass",
+    "session_counts_recomputed": "pass"
+  },
+  "bugs_fixed": [
+    "React hook-order violation in PatientRail when switching roles.",
+    "React hook-order violation in SessionNotebook when switching patient/role.",
+    "Unsaved note/point draft could leak from one patient to another; drafts are now keyed by patient id.",
+    "Brazilian and international acupuncture point codes were not canonicalized, so F3 and LV3 could be stored as different points.",
+    "Book-rule minHits cap was applied only to aggregate raw score but bypassed when evidence was merged item-by-item.",
+    "Empty sessions could be saved.",
+    "Malformed point codes could be silently stored.",
+    "Mobile CSS hid Student mode.",
+    "WebGL context loss could leave the 3D hero blank; now it fails to the simplified map.",
+    "Legacy/corrupted demo workspace data could propagate invalid element metrics.",
+    "Session numbering could be duplicated with a different session id."
+  ],
+  "clinical_safety_notes": [
+    "Clinician acupuncture recommendations remain separate from at-home acupressure.",
+    "Automatic clinician points are shown only for sufficiently supported patterns with verified pattern-core point sets.",
+    "Map-change language deliberately avoids calling element-score changes biomedical improvement."
+  ],
+  "not_yet_certified": [
+    "real Vite production build with installed runtime dependencies",
+    "Safari/iPhone HTTPS visual profiling",
+    "production authentication/authorization and tenant isolation",
+    "encrypted/policy-compliant health-data persistence",
+    "multi-user concurrent session editing",
+    "server-side patient search/pagination at commercial scale"
+  ]
+}

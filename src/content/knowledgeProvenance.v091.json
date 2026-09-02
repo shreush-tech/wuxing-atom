@@ -1,0 +1,48 @@
+{
+  "displayCitations": false,
+  "sources": {
+    "wikipedia_pt": {
+      "url": "https://pt.wikipedia.org/wiki/Wu_Xing",
+      "supports": [
+        "five phases",
+        "cycles",
+        "organs",
+        "seasons",
+        "directions",
+        "colors",
+        "emotions",
+        "five spirits"
+      ]
+    },
+    "huangdi_neijing": {
+      "url": "https://ctext.org/huangdi-neijing/shun-qi-yi-ri-fen-wei",
+      "supports": [
+        "classical seasons",
+        "colors",
+        "tastes",
+        "five musical tones"
+      ]
+    },
+    "pmc_review": {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7356495/",
+      "supports": [
+        "organs",
+        "sense organs",
+        "tissues",
+        "tastes",
+        "colors",
+        "emotions",
+        "seasons",
+        "tones"
+      ]
+    },
+    "general_tcm_context": {
+      "supports": [
+        "channel clock ranges",
+        "expanded educational prose",
+        "life-stage metaphors"
+      ],
+      "note": "Life-stage mapping is explicitly labeled symbolic, not a universal diagnostic correspondence."
+    }
+  }
+}

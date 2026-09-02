@@ -1,0 +1,54 @@
+{
+  "passed": 8,
+  "total": 8,
+  "rows": [
+    {
+      "name": "Spleen Qi",
+      "top": "spleen_qi",
+      "canShowResult": true,
+      "pass": true
+    },
+    {
+      "name": "Liver Qi",
+      "top": "liver_stagnation",
+      "canShowResult": true,
+      "pass": true
+    },
+    {
+      "name": "Kidney Yin",
+      "top": "kidney_yin",
+      "canShowResult": true,
+      "pass": true
+    },
+    {
+      "name": "Kidney Yang",
+      "top": "kidney_yang",
+      "canShowResult": true,
+      "pass": true
+    },
+    {
+      "name": "Lung Qi",
+      "top": "lung_qi",
+      "canShowResult": true,
+      "pass": true
+    },
+    {
+      "name": "Heart Fire",
+      "top": "heart_fire",
+      "canShowResult": true,
+      "pass": true
+    },
+    {
+      "name": "Chest safety",
+      "top": "lung_qi",
+      "canShowResult": false,
+      "pass": true
+    },
+    {
+      "name": "Neuro safety",
+      "top": null,
+      "canShowResult": false,
+      "pass": true
+    }
+  ]
+}

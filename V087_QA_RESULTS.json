@@ -1,0 +1,62 @@
+{
+  "version": "0.87",
+  "review_scope": [
+    "workspace role separation",
+    "patient/session longitudinal model",
+    "clinician note and point logging",
+    "patient evolution trajectory",
+    "clinical safety carry-over",
+    "separation of clinician acupuncture recommendations from patient acupressure",
+    "source/UI contradiction prevention",
+    "static TypeScript syntax"
+  ],
+  "gates": {
+    "v086_previous_gates": {
+      "passed": 12,
+      "total": 12
+    },
+    "v087_workspace_gates": {
+      "passed": 20,
+      "total": 20
+    },
+    "typescript_transpile_syntax": {
+      "files_checked": 198,
+      "errors": 0
+    }
+  },
+  "runtime_model_tests": {
+    "patient_name_normalization": "pass",
+    "ten_session_append_and_numbering": "pass",
+    "symptom_trajectory_ordering": "pass",
+    "point_code_normalization_and_deduplication": "pass",
+    "patient_mode_clears_active_clinician_chart": "pass"
+  },
+  "synthetic_patient_list_microbenchmark_ms": {
+    "50": {
+      "filter_ms": 0.048,
+      "render_cap": 40
+    },
+    "500": {
+      "filter_ms": 0.114,
+      "render_cap": 40
+    },
+    "5000": {
+      "filter_ms": 0.841,
+      "render_cap": 40
+    }
+  },
+  "bugs_or_conflicts_prevented": [
+    "Patient-mode transition can no longer leave a clinician patient chart selected.",
+    "Clinician suggested acupuncture points no longer come from the at-home acupressure recommendation module.",
+    "Only currently verified pattern-core point sets are exposed as clinician suggestions; missing verified cores yield no fabricated plan.",
+    "The default prototype repository is memory-only, avoiding silent persistence of names and clinical notes in the browser."
+  ],
+  "not_yet_certified": [
+    "real HTTPS Safari/WebGL runtime",
+    "production authentication and tenant authorization",
+    "production persistence of sensitive health data",
+    "multi-user concurrent edit conflict handling",
+    "large-server-dataset pagination/search",
+    "end-to-end browser automation because app dependencies are not installed in this environment"
+  ]
+}

@@ -1,0 +1,75 @@
+import {ClinicalProvider} from './clinical/store'
+import {Scene} from './three/Scene'
+import {SymptomExplorer} from './components/SymptomExplorer'
+import {ClinicalDiagnosesSection} from './components/ClinicalDiagnosesSection'
+import {JourneyGuide} from './components/JourneyGuide'
+import {ThemeControls} from './components/ThemeControls'
+import {EducationSection} from './components/EducationSection'
+import {AcupointConstellation} from './components/AcupointConstellation'
+import {ContactFooter} from './components/ContactFooter'
+import {AtomHint} from './components/AtomHint'
+import {ExperienceShell} from './components/ExperienceShell'
+import {FocusProvider,useFocus} from './components/FocusContext'
+import {ElementFocusCard} from './components/ElementFocusCard'
+import {YinYangInfoPanel} from './components/YinYangInfoPanel'
+import {ResultRevealGate} from './components/ResultRevealGate'
+import {FinalResultExperience} from './components/FinalResultExperience'
+import {AtomErrorBoundary} from './components/AtomErrorBoundary'
+import {WorkspaceProvider} from './workspace/WorkspaceProvider'
+import {PatientRail} from './workspace/PatientRail'
+import {RoleSwitcher} from './workspace/RoleSwitcher'
+import {KnowledgePortal} from './components/KnowledgePortal'
+import {WorkspaceClinicalBridge} from './workspace/WorkspaceClinicalBridge'
+import {SessionNotebook} from './workspace/SessionNotebook'
+import {PatientHistory} from './workspace/PatientHistory'
+import {MapChangeSummary} from './workspace/MapChangeSummary'
+import {HistoricalViewBanner} from './workspace/HistoricalViewBanner'
+import './styles/app.css'
+
+function FocusOverlay(){
+  const {focus,setFocus}=useFocus()
+  return <>
+    <ElementFocusCard element={focus} onClose={()=>setFocus(null)}/>
+    <YinYangInfoPanel/>
+  </>
+}
+
+export default function App(){
+  return <WorkspaceProvider><ClinicalProvider>
+    <FocusProvider>
+      <ExperienceShell>
+        <div className="page">
+          <main className="app">
+            <section className="scene-pane">
+              <div className="experience-toolbar">
+                <div className="brand"><span className="brand-mark">五</span><span>Wu Xing · mapa interativo</span></div>
+                <div className="workspace-toolbar"><RoleSwitcher/>
+              <KnowledgePortal/><ThemeControls/></div>
+              </div>
+              <PatientRail/>
+              <AtomErrorBoundary><Scene/></AtomErrorBoundary>
+            </section>
+            <aside className="panel">
+              <AtomHint/>
+              <WorkspaceClinicalBridge/>
+              <HistoricalViewBanner/>
+              <FocusOverlay/>
+              <ResultRevealGate/>
+              <JourneyGuide/>
+              <SymptomExplorer/>
+              <ClinicalDiagnosesSection/>
+              <SessionNotebook/>
+            </aside>
+          </main>
+
+          <FinalResultExperience/>
+          <PatientHistory/>
+          <MapChangeSummary/>
+          <EducationSection/>
+          <AcupointConstellation/>
+          <ContactFooter/>
+        </div>
+      </ExperienceShell>
+    </FocusProvider>
+  </ClinicalProvider></WorkspaceProvider>
+}
