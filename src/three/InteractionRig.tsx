@@ -53,10 +53,11 @@ export function InteractionRig({group,interaction}:{group:RefObject<THREE.Group>
       group.current.rotation.z+=roll
 
       // Low-pass the instantaneous pointer velocity so release has elegant inertia.
-      const targetX=yaw/eventDt,targetY=pitch/eventDt,targetZ=roll/eventDt
-      velocity.current.x=THREE.MathUtils.damp(velocity.current.x,targetX,18,eventDt)
-      velocity.current.y=THREE.MathUtils.damp(velocity.current.y,targetY,18,eventDt)
-      velocity.current.z=THREE.MathUtils.damp(velocity.current.z,targetZ,18,eventDt)
+      const clampV=(v:number)=>THREE.MathUtils.clamp(v,-1.45,1.45)
+      const targetX=clampV(yaw/eventDt),targetY=clampV(pitch/eventDt),targetZ=THREE.MathUtils.clamp(roll/eventDt,-.35,.35)
+      velocity.current.x=THREE.MathUtils.damp(velocity.current.x,targetX,14,eventDt)
+      velocity.current.y=THREE.MathUtils.damp(velocity.current.y,targetY,14,eventDt)
+      velocity.current.z=THREE.MathUtils.damp(velocity.current.z,targetZ,14,eventDt)
     }
 
     const up=(e:PointerEvent)=>{
@@ -111,7 +112,7 @@ export function InteractionRig({group,interaction}:{group:RefObject<THREE.Group>
       group.current.rotation.z+=velocity.current.z*dt
 
       // Exponential drag gives the same decay at 60, 90 or 120 Hz.
-      const drag=Math.exp(-4.7*dt)
+      const drag=Math.exp(-6.4*dt)
       velocity.current.x*=drag
       velocity.current.y*=drag
       velocity.current.z*=drag

@@ -86,17 +86,17 @@ export function YinYangCore({reduced=false}:{reduced?:boolean}){
   return <group ref={group} rotation={[0,0,.10]}>
     {/* two very close faces make the symbol read as an object inside the vessel, not a sticker */}
     <mesh position={[0,0,.055]} scale={[.76,.76,.76]}>
-      <circleGeometry args={[1,128]}/>
+      <circleGeometry args={[1,72]}/>
       <primitive object={material} attach="material"/>
     </mesh>
     <mesh position={[0,0,-.055]} rotation={[0,Math.PI,0]} scale={[.76,.76,.76]}>
-      <circleGeometry args={[1,128]}/>
+      <circleGeometry args={[1,72]}/>
       <primitive object={material} attach="material"/>
     </mesh>
 
     {/* translucent inner lens gives the Taijitu volume and soft refraction */}
     <mesh scale={[.82,.82,.18]}>
-      <sphereGeometry args={[1,48,32]}/>
+      <sphereGeometry args={[1,32,20]}/>
       <MeshTransmissionMaterial
         color="#f0e3bd"
         transmission={1}
@@ -107,12 +107,12 @@ export function YinYangCore({reduced=false}:{reduced?:boolean}){
         anisotropicBlur={.022}
         distortion={.025}
         distortionScale={.05}
-        samples={2}
-        resolution={64}
+        samples={1}
+        resolution={48}
       />
     </mesh>
     <mesh rotation={[0,0,.05]}>
-      <torusGeometry args={[.825,.012,8,160]}/>
+      <torusGeometry args={[.825,.016,6,72]}/>
       <meshBasicMaterial color="#e6bd68" transparent opacity={.18} blending={THREE.AdditiveBlending} depthWrite={false}/>
     </mesh>
   </group>
