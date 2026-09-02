@@ -1,7 +1,7 @@
 {
   "name": "wuxing-atom",
   "private": true,
-  "version": "0.98.0-refined-elements",
+  "version": "0.99.0-celestial-interaction",
   "type": "module",
   "scripts": {
     "unpack": "rm -rf src && tar -xzf src.tar.gz",

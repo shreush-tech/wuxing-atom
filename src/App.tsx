@@ -3,7 +3,6 @@ import {Scene} from './three/Scene'
 import {SymptomExplorer} from './components/SymptomExplorer'
 import {ClinicalDiagnosesSection} from './components/ClinicalDiagnosesSection'
 import {JourneyGuide} from './components/JourneyGuide'
-import {ThemeControls} from './components/ThemeControls'
 import {EducationSection} from './components/EducationSection'
 import {AcupointConstellation} from './components/AcupointConstellation'
 import {ContactFooter} from './components/ContactFooter'
@@ -47,18 +46,18 @@ export default function App(){
                 <strong>Os Cinco Movimentos em uma leitura única.</strong>
                 <p>O mapa permanece inteiro e estável enquanto você navega pela anamnese.</p>
               </div>
-              <div className="workspace-toolbar"><RoleSwitcher/><KnowledgePortal/><ThemeControls/></div>
+              <div className="workspace-toolbar"><RoleSwitcher/><KnowledgePortal/></div>
               <PatientRail/>
               <div className="desktop-rail-foot">Arraste para girar · clique nos elementos para explorar</div>
             </aside>
             <section className="scene-pane">
               <AtomErrorBoundary><Scene/></AtomErrorBoundary>
+              <FocusOverlay/>
             </section>
             <aside className="panel">
               <AtomHint/>
               <WorkspaceClinicalBridge/>
               <HistoricalViewBanner/>
-              <FocusOverlay/>
               <ResultRevealGate/>
               <JourneyGuide/>
               <SymptomExplorer/>

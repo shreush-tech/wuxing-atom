@@ -16,7 +16,6 @@ import { CameraRig } from './CameraRig'
 import { ClassicalNetwork } from './ClassicalNetwork'
 import { InteractionRig } from './InteractionRig'
 import { ZoomRig } from './ZoomRig'
-import { elementMeta } from '../content/elements'
 import { detectQualityTier, qualityConfig } from '../quality'
 import { createInteractionState } from './interactionState'
 import { WebGLFallback } from './WebGLFallback'
@@ -33,15 +32,9 @@ import { CosmicEnergySystem } from './CosmicEnergySystem'
 function SceneThemeEnvironment(){
   const {scene}=useThree()
   useEffect(()=>{
-    const apply=()=>{
-      const css=getComputedStyle(document.documentElement)
-      const color=(css.getPropertyValue('--user-bg')||css.getPropertyValue('--bg')||'#090b0d').trim()
-      scene.background=new THREE.Color(color)
-      scene.fog=new THREE.Fog(color,12,24)
-    }
-    apply()
-    window.addEventListener('wuxing-theme-change',apply as EventListener)
-    return ()=>window.removeEventListener('wuxing-theme-change',apply as EventListener)
+    const color='#07090b'
+    scene.background=new THREE.Color(color)
+    scene.fog=new THREE.Fog(color,12,24)
   },[scene])
   return null
 }
@@ -139,13 +132,5 @@ export function Scene(){
     <button className="reset-view" onClick={reset} aria-label="Recentrar mapa 3D">recentrar</button>
     <div className="scene-hint">arraste para girar · clique em um elemento para explorar</div>
 
-    <div className={`focus-label ${focus?'on':''}`} aria-live="polite">
-      {focus && <>
-        <div className="focus-char">{elementMeta[focus].char}</div>
-        <div className="focus-name">{elementMeta[focus].name}</div>
-        <div className="focus-sub">{elementMeta[focus].organs}</div>
-        <div className="focus-keywords">{elementMeta[focus].keywords}</div>
-      </>}
-    </div>
   </div>
 }

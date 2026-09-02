@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { symptoms, primarySymptomIds } from '../clinical/symptoms'
 import { useClinical } from '../clinical/store'
 import { AdaptiveQuestionCard } from './AdaptiveQuestionCard'
@@ -29,6 +29,9 @@ export function SymptomExplorer(){
   const [search,setSearch]=useState('')
   const [showMore,setShowMore]=useState(false)
   const [activeGroup,setActiveGroup]=useState<string|null>(null)
+  const [listening,setListening]=useState(false)
+  const [voiceNote,setVoiceNote]=useState('')
+  const recognitionRef=useRef<any>(null)
 
   const selectedIds=Object.entries(selected).filter(([,v])=>v==='yes').map(([k])=>k)
   const primary=primarySymptomIds.map(id=>symptoms.find(s=>s.id===id)!).filter(Boolean)
@@ -47,6 +50,25 @@ export function SymptomExplorer(){
     return symptoms.filter(s=>s.category!=='seguranca' && g.cats.includes(s.category)).slice(0,32)
   },[activeGroup])
 
+
+  const startVoice=()=>{
+    const SpeechRecognition=(window as any).SpeechRecognition||(window as any).webkitSpeechRecognition
+    if(!SpeechRecognition){setVoiceNote('Seu navegador não oferece reconhecimento de voz. Você pode continuar digitando normalmente.');return}
+    try{
+      recognitionRef.current?.stop?.()
+      const recognition=new SpeechRecognition()
+      recognition.lang='pt-BR';recognition.interimResults=true;recognition.continuous=false;recognition.maxAlternatives=1
+      recognition.onstart=()=>{setListening(true);setVoiceNote('Ouvindo… descreva o que está sentindo com suas palavras.')}
+      recognition.onresult=(event:any)=>{
+        let transcript=''
+        for(let i=event.resultIndex;i<event.results.length;i++)transcript+=event.results[i][0].transcript
+        transcript=transcript.trim();if(transcript){setSearch(transcript);setVoiceNote(`Entendi: “${transcript}”. Veja abaixo os sintomas relacionados e confirme tocando neles.`)}
+      }
+      recognition.onerror=()=>setVoiceNote('Não consegui entender o áudio. Tente novamente ou use a busca escrita.')
+      recognition.onend=()=>setListening(false)
+      recognitionRef.current=recognition;recognition.start()
+    }catch{setListening(false);setVoiceNote('Não foi possível iniciar o microfone agora.')}
+  }
   const goMap=()=>document.getElementById('resultado')?.scrollIntoView({behavior:'smooth',block:'start'})
 
   return <div className="panel-inner">
@@ -74,8 +96,15 @@ export function SymptomExplorer(){
         {groupedSymptoms.map(s=><button key={s.id} className={`symptom ${selected[s.id]==='yes'?'selected':''}`} onClick={()=>setAnswer(s.id,selected[s.id]==='yes'?'unknown':'yes')}>{s.label}</button>)}
       </div>}
 
-      <div className="search">
+      <div className="search voice-search">
         <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Buscar sintoma do seu jeito…"/>
+        <button type="button" className={`voice-search-button ${listening?'listening':''}`} onClick={startVoice} aria-label="Descrever sintomas por voz" title="Entrevista por voz">
+          <span className="voice-mic" aria-hidden="true">●</span><span>{listening?'Ouvindo':'Falar'}</span>
+        </button>
+      </div>
+      <div className="voice-assistant">
+        <span className="voice-assistant-badge">Assistente por voz</span>
+        <p>{voiceNote||'Toque em Falar e descreva seus sintomas. A fala vira busca; você confirma os sintomas antes de eles entrarem no mapa.'}</p>
       </div>
       {search && <div className="symptom-grid search-results">
         {searchResults.map(s=><button key={s.id} className={`symptom ${selected[s.id]==='yes'?'selected':''}`} onClick={()=>setAnswer(s.id,selected[s.id]==='yes'?'unknown':'yes')}>{s.label}</button>)}
