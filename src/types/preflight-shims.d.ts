@@ -80,6 +80,7 @@ export class BufferGeometry {
   export class CatmullRomCurve3 { [k:string]:any; constructor(...args:any[]) }
   export class QuadraticBezierCurve3 { [k:string]:any; constructor(...args:any[]) }
   export class Color { [k:string]:any; constructor(...args:any[]) }
+  export class Texture { [k:string]:any; constructor(...args:any[]) }
   export const MathUtils:any
   export const AdditiveBlending:any
   export const DoubleSide:any

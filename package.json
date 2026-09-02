@@ -1,7 +1,7 @@
 {
   "name": "wuxing-atom",
   "private": true,
-  "version": "0.97.0-gilded-stage",
+  "version": "0.98.0-refined-elements",
   "type": "module",
   "scripts": {
     "unpack": "rm -rf src && tar -xzf src.tar.gz",

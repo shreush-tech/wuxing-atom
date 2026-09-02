@@ -941,3 +941,38 @@ body{background:
   .reset-view{font-size:12px}
 }
 @media(min-width:1450px){.app{grid-template-columns:260px minmax(680px,1fr) 470px}}
+
+/* v0.98 — independent desktop columns, readable clinical workspace, refined interaction */
+@media(min-width:1101px){
+  .desktop-rail{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-gutter:stable;padding-right:14px}
+  .panel{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-gutter:stable;padding-right:4px!important}
+  .panel-inner{height:auto;min-height:100%;overflow:visible}
+  .panel-scroll{overflow:visible}
+  .scene-pane{position:sticky;top:16px;align-self:start}
+  .element-focus-card{position:absolute;right:18px;top:18px;width:min(330px,44%);max-height:calc(100% - 36px);overflow:auto;background:linear-gradient(180deg,rgba(19,18,16,.91),rgba(8,10,12,.94));color:#f2e8d5;border-color:rgba(230,190,96,.24);box-shadow:0 20px 60px rgba(0,0,0,.38)}
+  .element-focus-card h3{font-size:23px}.element-focus-card p{font-size:13px}.focus-theme-row span{font-size:12px}
+  .yin-yang-panel{left:18px;right:18px;bottom:18px;max-width:620px;max-height:62%;overflow:auto}
+
+  /* the notebook and pain area are part of the right-column document, never floating over it */
+  .session-notebook{margin:22px 24px 30px;padding-top:18px}
+  .session-notebook-trigger span{font-size:12px}.session-notebook-trigger strong{font-size:18px}
+  .session-summary-line span{font-size:12px;padding:10px}.session-notebook label>span{font-size:11px}
+  .session-notebook input:not([type=range]),.session-notebook textarea{font-size:14px;padding:12px}.session-notebook small{font-size:11px}
+  .session-error,.session-saved{font-size:11px}.burden-row b{font-size:12px}.save-session{font-size:13px;padding:11px 16px}
+  .pain-assessment{padding:16px}.pain-check span{font-size:18px!important}.add-pain{font-size:11px;padding:7px 11px}
+  .pain-location-row>span,.pain-scale span{font-size:11px}.pain-scale b{font-size:23px}.pain-location-row input{font-size:14px!important}
+}
+
+/* History should read like a real dashboard, not microcopy. */
+.patient-history{max-width:1180px}
+.history-hero>div:first-child>span,.history-section-title>span,.history-card>span{font-size:10px}
+.history-hero p,.history-dates strong,.history-card p,.history-empty,.history-kv strong{font-size:12px}
+.history-dates small{font-size:9px}.history-tabs button{font-size:11px;padding:9px 14px}
+.history-elements-mini small{font-size:9px}.history-elements-mini strong{font-size:12px}
+.history-section-title small{font-size:10px}.five-element-chart svg,.history-chart{height:220px}
+.five-element-chart polyline,.history-chart polyline{stroke-width:2.1}.five-element-chart .element-line{stroke-width:2}
+.history-chart circle{r:2.4;filter:drop-shadow(0 0 2px rgba(221,189,112,.55))}
+.element-legend span{font-size:10px}.element-session-table strong,.element-session-table span{font-size:10px}
+.pain-chart-card header strong{font-size:18px}.pain-chart-card footer span{font-size:9px}
+.pattern-history-row>strong{font-size:12px}.pattern-history-row span{font-size:9px;width:31px;height:31px}
+.history-session-list b,.history-session-list span,.history-session-list strong,.history-session-list small,.history-session-list i{font-size:11px}
