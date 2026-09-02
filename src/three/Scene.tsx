@@ -20,12 +20,8 @@ import { elementMeta } from '../content/elements'
 import { detectQualityTier, qualityConfig } from '../quality'
 import { createInteractionState } from './interactionState'
 import { WebGLFallback } from './WebGLFallback'
-import { AtmosphereDust } from './AtmosphereDust'
-import { SculpturalOrbits } from './SculpturalOrbits'
 import { CoreAura } from './CoreAura'
 import { SelectionRipple } from './SelectionRipple'
-import { DepthVeil } from './DepthVeil'
-import { GalleryLightMotion } from './GalleryLightMotion'
 import { ClinicalVisualDynamics } from './ClinicalVisualDynamics'
 import { ClinicalRelationshipDynamics } from './ClinicalRelationshipDynamics'
 import { useFocus } from '../components/FocusContext'
@@ -67,7 +63,7 @@ function World({focus,pulseKey,onFocus,waterSegments,particles}:{focus:ElementId
   const interaction=useRef(createInteractionState())
 
   return <>
-    <ambientLight intensity={.34}/>
+    <ambientLight intensity={.42}/>
     <pointLight position={[0,5,4]} intensity={14} distance={16} decay={2} color="#f0b37b"/>
     <pointLight position={[-5,1,3]} intensity={7} distance={14} decay={2} color="#779783"/>
     <pointLight position={[5,-1,2]} intensity={6} distance={14} decay={2} color="#aab6c2"/>
@@ -92,10 +88,6 @@ function World({focus,pulseKey,onFocus,waterSegments,particles}:{focus:ElementId
           <EmergentRelationship><RelationshipHalo relationship={clinical.relationship} maxParticles={particles}/></EmergentRelationship>
         </ClinicalRelationshipDynamics>
       </>} 
-      <DepthVeil/>
-        <GalleryLightMotion/>
-        <AtmosphereDust/>
-        <SculpturalOrbits/>
         <HypothesisField/>
         <ConvergencePulse/>
         <RevealConductor/>
@@ -127,12 +119,12 @@ export function Scene(){
   return <div className="scene-shell">
     <Canvas
       camera={{position:[.2,1.4,10.2],fov:42}}
-      dpr={qc.dpr}
-      gl={{antialias:tier!=='low',powerPreference:'high-performance'}}
+      dpr={tier==='high'?[1,1.35]:tier==='medium'?[1,1.15]:1}
+      gl={{antialias:false,powerPreference:'high-performance',alpha:false,stencil:false}}
       onCreated={({gl}:any)=>{
         gl.toneMapping=THREE.ACESFilmicToneMapping
         gl.toneMappingExposure=1.05
-        if('transmissionResolutionScale' in gl)gl.transmissionResolutionScale=tier==='low'?.45:tier==='medium'?.65:.82
+        if('transmissionResolutionScale' in gl)gl.transmissionResolutionScale=tier==='low'?.32:tier==='medium'?.42:.52
 
         // WebGL contexts can be lost on mobile Safari after memory pressure,
         // tab suspension or GPU resets. Fail soft instead of leaving a blank hero.

@@ -14,7 +14,7 @@ export function detectQualityTier():QualityTier{
 }
 
 export const qualityConfig = {
-  high:{dpr:[1,2] as [number,number],waterSegments:96,particles:14,shadows:false},
-  medium:{dpr:[1,1.6] as [number,number],waterSegments:64,particles:10,shadows:false},
-  low:{dpr:[1,1.25] as [number,number],waterSegments:40,particles:7,shadows:false}
+  high:{dpr:[1,1.35] as [number,number],waterSegments:56,particles:10,shadows:false},
+  medium:{dpr:[1,1.15] as [number,number],waterSegments:40,particles:8,shadows:false},
+  low:{dpr:[1,1] as [number,number],waterSegments:28,particles:5,shadows:false}
 }

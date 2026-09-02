@@ -1,4 +1,3 @@
-import { MeshTransmissionMaterial } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import * as THREE from 'three'
@@ -22,33 +21,26 @@ export function orbitPosition(id:ElementId,t:number){
 }
 
 function GlassVessel({id}:{id:ElementId}){
-  const tint:Record<ElementId,string>={wood:'#5f8a6d',fire:'#d87555',earth:'#b38d58',metal:'#c5ced5',water:'#4b829a'}
+  // v0.95: the five outer vessels use a single inexpensive physical shell.
+  // We keep the premium glass/transmission budget for the Yin–Yang nucleus.
+  const tint:Record<ElementId,string>={wood:'#315c3d',fire:'#c94e2d',earth:'#8b6237',metal:'#aeb8bf',water:'#245f7e'}
   return <group>
     <mesh scale={1.34}>
-      <sphereGeometry args={[.64,44,44]}/>
-      <MeshTransmissionMaterial
+      <sphereGeometry args={[.64,24,18]}/>
+      <meshPhysicalMaterial
         color={tint[id]}
-        transmission={1}
-        thickness={.72}
-        ior={1.22}
-        roughness={.08}
-        chromaticAberration={.018}
-        anisotropicBlur={.05}
-        distortion={.08}
-        distortionScale={.16}
-        temporalDistortion={.03}
-        samples={3}
-        resolution={64}
-        backside
+        roughness={.24}
+        metalness={id==='metal'?.62:.06}
+        clearcoat={.72}
+        clearcoatRoughness={.12}
+        transparent
+        opacity={.72}
+        depthWrite
       />
     </mesh>
-    <mesh scale={1.355}>
-      <sphereGeometry args={[.64,32,32]}/>
-      <meshPhysicalMaterial color="#fff6df" transparent opacity={.055} roughness={.10} metalness={0} clearcoat={1} clearcoatRoughness={.04} depthWrite={false}/>
-    </mesh>
     <mesh rotation={[1.15,.2,.48]}>
-      <torusGeometry args={[.92,.006,6,96]}/>
-      <meshBasicMaterial color="#e0b55b" transparent opacity={.14} blending={THREE.AdditiveBlending} depthWrite={false}/>
+      <torusGeometry args={[.92,.005,4,48]}/>
+      <meshBasicMaterial color="#e0b55b" transparent opacity={.11} blending={THREE.AdditiveBlending} depthWrite={false}/>
     </mesh>
   </group>
 }

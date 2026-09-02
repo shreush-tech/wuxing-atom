@@ -70,9 +70,9 @@ function CosmicStarfield({reduced=false}:{reduced?:boolean}){
     ref.current.rotation.z=t*.00055
   })
   return <group ref={ref}>
-    <StarShell count={160} radius={11} size={.052} opacity={.45} warm/>
-    <StarShell count={360} radius={17} size={.034} opacity={.38}/>
-    <StarShell count={700} radius={25} size={.022} opacity={.26}/>
+    <StarShell count={90} radius={11} size={.052} opacity={.42} warm/>
+    <StarShell count={180} radius={17} size={.034} opacity={.34}/>
+    <StarShell count={300} radius={25} size={.022} opacity={.22}/>
   </group>
 }
 
@@ -95,7 +95,7 @@ function GoldenOrbitRig({reduced=false}:{reduced?:boolean}){
 
   const groupRefs=useRef<THREE.Group[]>([])
   const materialRefs=useRef<THREE.MeshBasicMaterial[]>([])
-  const geometries=useMemo(()=>rings.map(s=>new THREE.TubeGeometry(s.curve,144,s.tube,6,true)),[rings])
+  const geometries=useMemo(()=>rings.map(s=>new THREE.TubeGeometry(s.curve,72,s.tube,4,true)),[rings])
   useFrame(({clock})=>{
     if(reduced)return
     const t=clock.getElapsedTime()
@@ -124,7 +124,7 @@ function GoldenOrbitRig({reduced=false}:{reduced?:boolean}){
 
 function EnergyComets({curves,reduced}:{curves:THREE.Curve<THREE.Vector3>[],reduced:boolean}){
   const mesh=useRef<THREE.InstancedMesh>(null!)
-  const count=reduced?0:14
+  const count=reduced?0:7
   const dummy=useMemo(()=>new THREE.Object3D(),[])
   const tangent=useMemo(()=>new THREE.Vector3(),[])
   const ahead=useMemo(()=>new THREE.Vector3(),[])
@@ -162,7 +162,7 @@ function EnergyComets({curves,reduced}:{curves:THREE.Curve<THREE.Vector3>[],redu
 
 function EnergyParticles({curves,reduced}:{curves:THREE.Curve<THREE.Vector3>[],reduced:boolean}){
   const mesh=useRef<THREE.InstancedMesh>(null!)
-  const count=reduced?0:30
+  const count=reduced?0:16
   const assignments=useMemo(()=>Array.from({length:count},(_,i)=>({
     curve:i%curves.length,
     phase:(i*.61803398875)%1,
@@ -195,7 +195,7 @@ function StructuralBridges(){
     const b=canonicalAnchors[(i+1)%canonicalAnchors.length]
     return makeBridgeCurve(a,b,.42)
   }),[])
-  const geometries=useMemo(()=>bridges.map(curve=>new THREE.TubeGeometry(curve,64,.009,5,false)),[bridges])
+  const geometries=useMemo(()=>bridges.map(curve=>new THREE.TubeGeometry(curve,32,.009,4,false)),[bridges])
   return <group>
     {bridges.map((curve,i)=><mesh key={i} geometry={geometries[i]}>
       <meshBasicMaterial color={WARM} transparent opacity={.13} blending={THREE.AdditiveBlending} depthWrite={false}/>
