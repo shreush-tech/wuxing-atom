@@ -42,9 +42,9 @@ export default function App(){
             <aside className="desktop-rail">
               <div className="brand"><span className="brand-mark">五</span><span>Wu Xing · Reushtech</span></div>
               <div className="desktop-rail-copy">
-                <span>Constelação clínica</span>
-                <strong>The Five Gems · Cinco Movimentos, uma leitura.</strong>
-                <p>As cinco gemas permanecem visíveis enquanto você constrói sua constelação de sintomas.</p>
+                <span>Constelação de sintomas · sistemas orgânicos</span>
+                <strong>Sua Medicina Chinesa</strong>
+                <p>As cinco gemas acompanham sua leitura enquanto você descreve sinais, sintomas e diagnósticos clínicos já conhecidos.</p>
               </div>
               <div className="workspace-toolbar"><RoleSwitcher/><KnowledgePortal/></div>
               <PatientRail/>

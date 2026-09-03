@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect,useState} from 'react'
 import {knowledgeTopics,type KnowledgeTopicId} from '../content/knowledgeTopics'
 
 const ids:KnowledgeTopicId[]=['wuxing','wood','fire','earth','metal','water','yin_yang','qi','tao']
@@ -7,6 +7,7 @@ export function KnowledgePortal(){
   const [open,setOpen]=useState(false)
   const [topic,setTopic]=useState<KnowledgeTopicId>('wuxing')
   const item=knowledgeTopics[topic]
+  useEffect(()=>{const openPortal=()=>setOpen(true);window.addEventListener('reush-open-knowledge',openPortal);return()=>window.removeEventListener('reush-open-knowledge',openPortal)},[])
   return <>
     <button className="knowledge-star" aria-label="Abrir conhecimento" onClick={()=>setOpen(true)}>
       <span>✦</span><small>Conhecimento</small>

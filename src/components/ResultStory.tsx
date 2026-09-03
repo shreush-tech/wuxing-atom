@@ -39,7 +39,7 @@ export function ResultStory(){
     </div>
 
     <div className="why-map">
-      <h3>Por que seu mapa ficou assim?</h3>
+      <h3>Por que seu equilíbrio apareceu assim?</h3>
       <p>Não foi uma resposta isolada. Estes sinais formaram o conjunto que mais sustentou a leitura:</p>
       <div className="evidence-cards">
         {s.evidence.map((e,i)=><article key={`${e.label}-${i}`}>

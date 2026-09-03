@@ -16,7 +16,7 @@ export function AcupointConstellation(){
   return <section className={`point-constellation ${open?'open':''}`}>
     <button className="point-constellation-head" onClick={()=>setOpen(v=>!v)}>
       <span>Depois da leitura</span>
-      <strong>Explorar acupontos relacionados ao seu mapa</strong>
+      <strong>Explorar acupontos relacionados ao seu equilíbrio</strong>
       <i>{open?'−':'+'}</i>
     </button>
     {open&&<div className="point-orbit-map">

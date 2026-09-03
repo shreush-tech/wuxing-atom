@@ -12,7 +12,7 @@ export function ResultGateway(){
     <span>{initial?'Seu equilíbrio orgânico já tem uma primeira forma':'Seu equilíbrio orgânico está pronto para uma primeira leitura'}</span>
     <strong>{initial?'Quer ver agora ou diferenciar melhor?':'Veja o que apareceu — e refine se quiser.'}</strong>
     <div className="result-gateway-actions">
-      <button type="button" className="primary" onClick={go}>Ver meu mapa agora</button>
+      <button type="button" className="primary" onClick={go}>Ver meu equilíbrio agora</button>
       <button type="button" className="secondary" onClick={refine}>Refinar com +3 perguntas</button>
     </div>
     <small>Você não precisa acumular muitos sintomas. A leitura mostra o grau de sustentação das respostas atuais.</small>

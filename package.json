@@ -1,7 +1,7 @@
 {
   "name": "wuxing-atom",
   "private": true,
-  "version": "1.0.0-reushtech-five-gems",
+  "version": "1.01.0-refined-constellation",
   "type": "module",
   "scripts": {
     "unpack": "rm -rf src && tar -xzf src.tar.gz",

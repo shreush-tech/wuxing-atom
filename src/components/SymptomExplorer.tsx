@@ -9,6 +9,7 @@ import { ResultGateway } from './ResultGateway'
 import { SimpleJourney } from './SimpleJourney'
 import { searchBookIndex } from '../content/bookIndex'
 import { searchClinicalDiagnoses } from '../clinical/clinicalDiagnoses'
+import { PainQuickCapture } from './PainQuickCapture'
 
 const norm=(s:string)=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 
@@ -26,7 +27,7 @@ const groups=[
 ]
 
 export function SymptomExplorer(){
-  const {selected,setAnswer,clinical,clear,clinicalDiagnosisIds,toggleClinicalDiagnosis}=useClinical()
+  const {selected,setAnswer,clinical,clear,clinicalDiagnosisIds,toggleClinicalDiagnosis,clearPainReports}=useClinical()
   const [search,setSearch]=useState('')
   const [showMore,setShowMore]=useState(false)
   const [activeGroup,setActiveGroup]=useState<string|null>(null)
@@ -75,15 +76,16 @@ export function SymptomExplorer(){
   return <div className="panel-inner">
     <div className="sheet-handle" aria-hidden="true"></div>
     <div className="panel-head">
-      <div className="eyebrow">Leitura educativa · Medicina Chinesa</div>
+      <div className="eyebrow">Sua Medicina Chinesa · leitura educativa</div>
       <h1>Construa sua constelação de sintomas</h1>
-      <p className="lead">Selecione sinais e sintomas que você percebe hoje. Dor recebe destaque porque pode coexistir com outras queixas clínicas.</p>
+      <p className="lead">Selecione sinais e sintomas que você percebe hoje. Dor recebe destaque e pode ser detalhada por local e intensidade.</p>
     </div>
 
     <div className="panel-scroll">
       <div className="symptom-grid">
-        {primary.map(s=><button key={s.id} className={`symptom ${selected[s.id]==='yes'?'selected':''}`} onClick={()=>setAnswer(s.id,selected[s.id]==='yes'?'unknown':'yes')}>{s.label}</button>)}
+        {primary.map(s=><button key={s.id} className={`symptom ${selected[s.id]==='yes'?'selected':''}`} onClick={()=>{const next=selected[s.id]==='yes'?'unknown':'yes';setAnswer(s.id,next);if(s.id==='pain_general'&&next!=='yes')clearPainReports()}}>{s.label}</button>)}
       </div>
+      <PainQuickCapture/>
 
       <button type="button" className="more-symptoms-toggle" onClick={()=>{setShowMore(v=>!v); if(showMore)setActiveGroup(null)}}>
         {showMore?'Fechar outros sintomas':'Outros sintomas +'}

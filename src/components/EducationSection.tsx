@@ -6,11 +6,11 @@ export function EducationSection(){
   const top=clinical.patterns[0]
 
   return <section className="education-section" id="entenda-seu-mapa">
-    <div className="education-eyebrow">Depois do mapa</div>
+    <div className="education-eyebrow">Depois da leitura</div>
     <h2>Entenda o que apareceu</h2>
     <p className="education-lead">
       A experiência organiza combinações de sintomas segundo a lógica tradicional da Medicina Chinesa.
-      O objetivo é tornar o raciocínio compreensível e educativo; o mapa não substitui diagnóstico médico.
+      O objetivo é tornar o raciocínio compreensível e educativo; a leitura não substitui diagnóstico médico.
     </p>
 
     {clinical.interview.canShowResult && top && top.raw>0 ? <div className="education-card">
@@ -21,7 +21,7 @@ export function EducationSection(){
       </div>
       <PatternDetails patternId={top.id}/>
     </div> : <div className="education-empty">
-      Faça algumas escolhas no mapa para que esta seção passe a explicar os sinais que apareceram.
+      Faça algumas escolhas na constelação para que esta seção passe a explicar os sinais que apareceram.
     </div>}
   </section>
 }

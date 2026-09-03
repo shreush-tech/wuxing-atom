@@ -12,7 +12,7 @@ export function YinYangInfoPanel(){
   return <div className="scene-info-backdrop" role="presentation" onPointerDown={()=>setOpen(false)}>
     <aside className="yin-yang-panel scene-info-card" aria-live="polite" aria-label="Yin e Yang" onPointerDown={ev=>ev.stopPropagation()}>
       <button className="focus-close" type="button" onClick={()=>setOpen(false)} aria-label="Fechar Yin e Yang">×</button>
-      <div className="yy-kicker">Núcleo do mapa</div>
+      <div className="yy-kicker">Núcleo do equilíbrio</div>
       <h3>{yinYangEducation.title}</h3>
       <p className="yy-headline">{yinYangEducation.headline}</p>
       <p>{yinYangEducation.short}</p>
